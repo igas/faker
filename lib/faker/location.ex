@@ -2,48 +2,57 @@ defmodule Faker.Location do
   @moduledoc """
   Generating random locations in given area
   """
+  @type location :: {float(), float()}
+
+  @earth_radius 6_378_137
+  @base_location {50.0, 0.0}
 
   @doc """
-  Returns a random location
+  Returns a random location inside a square of 2x distance of base location
+  in distance from base location using the haversine formula
+  https://en.wikipedia.org/wiki/Haversine_formula/
 
   ## Examples
-    iex(1)> Location.location(1000)
-    {49.86283137803154, 0.03094694958861186}
-    iex(2)> Location.location(1000)
-    {50.00726797585422, 0.07576344274959462}
-    iex(3)> Location.location(1000)
-    {49.953972550067206, 0.03563844042581768}
-    iex(4)> Location.location(1000)
-    {49.94782059338023, -0.20998609857383446}
+  iex(1)> Faker.Location.location(111000)
+  {49.31082153226589, -1.0237004535898575}
+  iex(2)> Faker.Location.location(111000)
+  {50.17003150421721, -1.2572991002344942}
+  iex(3)> Faker.Location.location(111000)
+  {49.837239966568546, 0.6050921891507782}
+  iex(4)> Faker.Location.location(111000)
+  {49.53208042114932, -1.493756117282846}
   """
-  def location(radius, base_location \\ {50.0, 0.0}) do
-    offset_in_metres(base_location, radius)
+  @spec location(integer(), location()) :: location()
+  def location(distance, base_location \\ @base_location) do
+    offset_in_metres(base_location, distance)
   end
 
-  @earth_radius 6378137
-  def offset_in_metres({lat, lon}, radius) do
+  defp offset_in_metres({lat, lon}, distance) do
     rand_lat =
       Faker.random_uniform()
-      |> shift_radious(radius)
+      |> shift_distance(distance)
       |> offset_in_rad_lat()
-      |> to_decimal_degrees()
+      |> rad_to_deg()
       |> Kernel.+(lat)
-    rand_lon = 
+
+    rand_lon =
       Faker.random_uniform()
-      |> shift_radious(radius)
+      |> shift_distance(distance)
       |> offset_in_rad_lon(lat)
-      |> to_decimal_degrees()
+      |> rad_to_deg()
       |> Kernel.+(lon)
 
     {rand_lat, rand_lon}
   end
 
-  defp shift_radious(val, radius), do: radius * (val - 0.5) * 2
+  defp shift_distance(val, distance), do: distance * (val - 0.5) * 2
+
   defp offset_in_rad_lat(meters), do: meters / @earth_radius
-  defp offset_in_rad_lon(meters, lat), do: meters / earth_slice_radious_on_lng(lat)
 
-  defp earth_slice_radious_on_lng(lat),
-    do: @earth_radius * :math.cos(:math.pi * (lat / 180) )
+  defp offset_in_rad_lon(meters, lat), do: meters / earth_slice_radius_on_lng(lat)
 
-  defp to_decimal_degrees(rad), do: rad * (180 / :math.pi)
+  defp earth_slice_radius_on_lng(lat),
+    do: @earth_radius * :math.cos(:math.pi() * (lat / 180))
+
+  defp rad_to_deg(rad), do: rad * (180 / :math.pi())
 end
