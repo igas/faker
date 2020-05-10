@@ -5,7 +5,7 @@ defmodule Faker.Location do
   @type location :: {float(), float()}
 
   @earth_radius 6_378_137
-  @base_location {50.0, 0.0}
+  @base_location {51.4, 0.0}
 
   @doc """
   Returns a random location inside a square of 2x distance of base location
@@ -14,13 +14,13 @@ defmodule Faker.Location do
 
   ## Examples
   iex(1)> Faker.Location.location(111000)
-  {49.31082153226589, -1.0237004535898575}
+  {50.710821532265896, -1.0547258975429654}
   iex(2)> Faker.Location.location(111000)
-  {50.17003150421721, -1.2572991002344942}
+  {51.570031504217205, -1.2954042535826502}
   iex(3)> Faker.Location.location(111000)
-  {49.837239966568546, 0.6050921891507782}
+  {51.237239966568545, 0.6234308093351572}
   iex(4)> Faker.Location.location(111000)
-  {49.53208042114932, -1.493756117282846}
+  {50.932080421149315, -1.5390276090887278}
   """
   @spec location(integer(), location()) :: location()
   def location(distance, base_location \\ @base_location) do
