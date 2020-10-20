@@ -161,7 +161,7 @@ defmodule Faker.Avatar do
 
   defp query(_), do: ""
 
-  defp random_slug(), do: "#{Lorem.characters(1..20)}"
+  defp random_slug, do: "#{Lorem.characters(1..20)}"
   defp set_url(%{raw: true}), do: ""
   defp set_url(%{raw: false, set: nil}), do: set()
   defp set_url(%{raw: false, set: set_value}), do: set_to_url(set_value)
