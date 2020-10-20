@@ -8,7 +8,12 @@ Change log itself follows [Keep a CHANGELOG](http://keepachangelog.com) format.
 
 ## Unreleased
 
+
+
 ### Added
+
+- `Faker.Avatar.image_url_with_opts/1` [[delmendo](https://github.com/delmendo)]
+
 
 ### Changed
 
