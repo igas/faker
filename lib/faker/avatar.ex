@@ -115,15 +115,23 @@ defmodule Faker.Avatar do
 
 
   """
-  @spec image_url_with_opts(
-          ssl: boolean(),
-          set: integer(),
-          bg: integer(),
-          raw: boolean(),
-          slug: String.t(),
-          height: integer(),
-          width: integer
-        ) :: String.t()
+  @type ssl_option :: {:ssl, boolean}
+  @type raw_option :: {:raw, boolean}
+  @type set_option :: {:set, integer | nil}
+  @type bg_option :: {:bg, integer | nil}
+  @type height_option :: {:height, integer | nil}
+  @type width_option :: {:width, integer | nil}
+  @type slug_option :: {:slug, String.t() | nil}
+
+  @spec image_url_with_opts([
+          ssl_option
+          | raw_option
+          | set_option
+          | bg_option
+          | height_option
+          | width_option
+          | slug_option
+        ]) :: String.t()
   def image_url_with_opts(
         opts \\ [
           ssl: false,
@@ -136,15 +144,18 @@ defmodule Faker.Avatar do
         ]
       ) do
     opt_map =
-      Enum.into(opts, %{
-        ssl: false,
-        set: nil,
-        bg: nil,
-        raw: false,
-        slug: nil,
-        height: nil,
-        width: nil
-      })
+      Enum.into(
+        opts,
+        %{
+          ssl: false,
+          set: nil,
+          bg: nil,
+          raw: false,
+          slug: nil,
+          height: nil,
+          width: nil
+        }
+      )
 
     "#{robohash_url(opt_map[:ssl])}#{set_url(opt_map)}#{bg_url(opt_map)}/#{slug(opt_map)}#{
       query(opt_map)
