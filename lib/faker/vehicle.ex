@@ -125,6 +125,59 @@ defmodule Faker.Vehicle do
   end
 
   @doc """
+  Returns a vehicle trim string
+
+  ## Examples
+      iex> Faker.Vehicle.trim("BMW", "X5")
+      "xDrive50i"
+      iex> Faker.Vehicle.trim("Ford", "Mustang")
+      "Eco Boost Premium"
+      iex> Faker.Vehicle.trim("Ford", "Focus")
+      "Titanium"
+      iex> Faker.Vehicle.trim("BMW", "M5")
+      "Base"
+  """
+  @spec trim(String.t(), String.t()) :: String.t()
+  def trim(make, model) do
+    En.trim(make, model)
+  end
+
+  @doc """
+  Returns a vehicle make, model, and trim  string
+
+  ## Examples
+
+      iex> Faker.Vehicle.make_model_and_trim()
+      "BMW X5 M50i"
+      iex> Faker.Vehicle.make_model_and_trim()
+      "Ford Mustang Eco Boost Premium"
+      iex> Faker.Vehicle.make_model_and_trim()
+      "Ford Focus Titanium"
+      iex> Faker.Vehicle.make_model_and_trim()
+      "BMW M5 Competition"
+  """
+  @spec make_model_and_trim() :: String.t()
+  def make_model_and_trim do
+    En.make_model_and_trim()
+  end
+
+  @doc """
+  Returns a vehicle trim string
+
+  ## Examples
+      iex> Faker.Vehicle.trim()
+      "Essence"
+      iex> Faker.Vehicle.trim()
+      "L"
+      iex> Faker.Vehicle.trim()
+      "EX"
+      iex> Faker.Vehicle.trim()
+      "Base"
+  """
+  @spec trim() :: String.t()
+  localize(:trim)
+
+  @doc """
   Returns a vehicle option string
 
   ## Examples

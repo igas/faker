@@ -32,6 +32,116 @@ defmodule Faker.Vehicle.En do
     "Nissan" => ["Rogue", "Juke", "Cube", "Pathfiner", "Versa", "Altima"]
   }
 
+  @trims %{
+    {"Audi", "A4"} => ["40 Premium", "45 Premium"],
+    {"Audi", "A5"} => ["2.0T Premium"],
+    {"Audi", "S5"} => ["3.0T Premium"],
+    {"Audi", "A7"} => ["55 Premium"],
+    {"Audi", "A8"} => ["L 55"],
+    {"Buick", "Enclave"} => ["Preferred", "Essence", "Premium", "Avenir"],
+    {"Buick", "Regal"} => ["1SV", "Turbo Sport Touring", "Turbo", "Turbo Premium II", "Turbo GS"],
+    {"Buick", "LaCrosse"} => [
+      "Base",
+      "Preferred",
+      "Essence",
+      "Premium",
+      "Sport Touring",
+      "Avenir"
+    ],
+    {"Buick", "Verano"} => ["Base", "Sport Touring", "Leather Group"],
+    {"Buick", "Encore"} => [
+      "Base",
+      "Preferred",
+      "Sport Touring",
+      "Preferred II",
+      "Essence",
+      "Premium"
+    ],
+    {"Buick", "Riveria"} => ["Base"],
+    {"BMW", "328i"} => ["i", "i xDrive SULEV", "i xDrive"],
+    {"BMW", "M3"} => ["Base", "CS"],
+    {"BMW", "M5"} => ["Base", "Competition"],
+    {"BMW", "X1"} => ["sDrive28i", "xDrive28i"],
+    {"BMW", "X3"} => ["sDrive30i", "xDrive30i", "M40i"],
+    {"BMW", "X5"} => ["sDrive40i", "xDrive40i", "xDrive50i", "M50i"],
+    {"Chevy", "Camaro"} => ["1LS", "1LT", "2LT", "3LT", "LT1", "1SS", "2SS", "ZL1"],
+    {"Chevy", "Silverado"} => [
+      "Work Truck",
+      "Silverado Custom",
+      "LT",
+      "RST",
+      "Silverado Custom Trail Boss",
+      "LTZ",
+      "LT Trail Boss",
+      "High Country"
+    ],
+    {"Chevy", "Malibu"} => ["L", "LS w/1LS", "RS", "LT", "Premier"],
+    {"Dodge", "Ram"} => ["ST", "SLT", "R/T", "Sport", "Laramie", "Laramie Longhorn"],
+    {"Dodge", "Challenger"} => ["SXT", "GT", "R/T", "R/T Scat Pack", "SRT Hellcat"],
+    {"Dodge", "Charger"} => ["SXT", "GT", "R/T", "Scat Pack", "SRT Hellcat"],
+    {"Dodge", "Durango"} => ["SXT", "GT", "Citadel", "R/T", "SRT"],
+    {"Ford", "Mustang"} => ["Eco Boost", "Eco Boost Premium", "GT", "GT Premium", "BULLITT"],
+    {"Ford", "F150"} => ["XL", "XLT", "Lariat", "King Ranch", "Raptor", "Platinum", "Limited"],
+    {"Ford", "Focus"} => ["S", "SE", "SEL", "Titanium"],
+    {"Ford", "Fiesta"} => ["S", "SE", "ST", "Titanium"],
+    {"Honda", "Accord"} => [
+      "LX",
+      "Sport",
+      "EX",
+      "EX-L",
+      "Sport 2.0T",
+      "EX-L 2.0T",
+      "Touring",
+      "Touring 2.0T"
+    ],
+    {"Honda", "Civic"} => [
+      "LX",
+      "LX-P",
+      "EX",
+      "EX-T",
+      "Sport",
+      "EX-L",
+      "Si",
+      "EX-L w/Navi",
+      "Touring",
+      "Sport Touring"
+    ],
+    {"Honda", "CR-V"} => ["LX", "EX", "EX-L", "Touring"],
+    {"Honda", "Odyssey"} => ["LX", "EX", "EX-L", "EX-L w/Navi & Res", "Touring", "Elite"],
+    {"Lincoln", "Navigator"} => ["Standard", "Reserve", "Black Label"],
+    {"Lincoln", "MKZ"} => ["Standard", "Reserve"],
+    {"Lincoln", "MKX"} => ["Premiere", "Select", "Reserve", "Black Label"],
+    {"Lincoln", "MKS"} => ["Base", "EcoBoost"],
+    {"Nissan", "Rogue"} => ["S", "SV", "SL"],
+    {"Nissan", "Juke"} => ["S", "SV", "NISMO", "SL", "NISMO RS"],
+    {"Nissan", "Cube"} => ["1.8 S", "1.8 SL"],
+    {"Nissan", "Pathfinder"} => ["S", "SV", "SL", "Platinum"],
+    {"Nissan", "Versa"} => ["1.6 S", "1.6 SV", "1.6 SR"],
+    {"Nissan", "Altima"} => [
+      "2.5 S",
+      "2.5 SR",
+      "2.5 SV",
+      "2.0 SR",
+      "2.5 SL",
+      "2.5 Platinum",
+      "2.0 Platinum"
+    ],
+    {"Toyota", "Prius"} => ["L", "LE", "XLE", "Limited"],
+    {"Toyota", "Camry"} => [
+      "L",
+      "LE",
+      "SE",
+      "SE Nightshade",
+      "Nightshade",
+      "XLE",
+      "XSE",
+      "TRD V6",
+      "XLE V6",
+      "XSE V6"
+    ],
+    {"Toyota", "Corolla"} => ["L", "LE", "SE", "Nightshade", "XLE", "XSE"]
+  }
+
   @options [
     "A/C: Front",
     "Airbag: Driver",
@@ -262,10 +372,6 @@ defmodule Faker.Vehicle.En do
     "Tire pressure monitoring display"
   ]
 
-  defp all_models do
-    Enum.reduce(Map.values(@models), [], fn models, acc -> acc ++ models end)
-  end
-
   @doc """
   Returns a vehicle body style string
 
@@ -390,7 +496,7 @@ defmodule Faker.Vehicle.En do
   """
   @spec model() :: String.t()
   def model do
-    Util.pick(all_models())
+    Util.pick(all_values(@models))
   end
 
   @doc """
@@ -416,6 +522,67 @@ defmodule Faker.Vehicle.En do
     else
       model()
     end
+  end
+
+  @doc """
+  Returns a vehicle make, model, and trim  string
+
+  ## Examples
+
+      iex> Faker.Vehicle.En.make_model_and_trim()
+      "BMW X5 M50i"
+      iex> Faker.Vehicle.En.make_model_and_trim()
+      "Ford Mustang Eco Boost Premium"
+      iex> Faker.Vehicle.En.make_model_and_trim()
+      "Ford Focus Titanium"
+      iex> Faker.Vehicle.En.make_model_and_trim()
+      "BMW M5 Competition"
+  """
+  @spec make_model_and_trim() :: String.t()
+  def make_model_and_trim do
+    make = make()
+    model = model(make)
+    trim = trim(make, model)
+    "#{make} #{model} #{trim}"
+  end
+
+  @doc """
+  Returns a realistic vehicle trim string
+  for the given make and model.
+
+  ## Examples
+
+      iex> Faker.Vehicle.En.trim("Ford", "Focus")
+      "SEL"
+      iex> Faker.Vehicle.En.trim("Ford", "F150")
+      "Lariat"
+      iex> Faker.Vehicle.En.trim("Nissan", "Altima")
+      "2.5 S"
+      iex> Faker.Vehicle.En.trim("Chevy", "Camaro")
+      "1LS"
+  """
+  @spec trim(String.t(), String.t()) :: String.t()
+  def trim(make, model) do
+    make_model = Map.get(@trims, {make, model})
+    pick_trim(make_model)
+  end
+
+  @doc """
+  Returns a random vehicle trim string
+
+  ## Examples
+      iex> Faker.Vehicle.En.trim()
+      "Essence"
+      iex> Faker.Vehicle.En.trim()
+      "L"
+      iex> Faker.Vehicle.En.trim()
+      "EX"
+      iex> Faker.Vehicle.En.trim()
+      "Base"
+  """
+  @spec trim() :: String.t()
+  def trim do
+    Util.pick(all_values(@trims))
   end
 
   @doc """
@@ -541,4 +708,13 @@ defmodule Faker.Vehicle.En do
   """
   @spec transmission() :: String.t()
   sampler(:transmission, ["Automanual", "Automatic", "CVT", "Manual"])
+
+  @spec all_values(map()) :: list()
+  defp all_values(map) do
+    Enum.reduce(Map.values(map), [], fn list, acc -> acc ++ list end)
+  end
+
+  @spec pick_trim(nil | []) :: String.t()
+  defp pick_trim(nil), do: trim()
+  defp pick_trim(trims), do: Util.pick(trims)
 end

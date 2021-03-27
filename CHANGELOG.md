@@ -11,6 +11,7 @@ Change log itself follows [Keep a CHANGELOG](http://keepachangelog.com) format.
 ### Added
 - `Faker.Internet.StatusCode` [[@emmetreza](https://github.com/emmetreza)]
 
+- `Faker.Vehicle.trim/2` [[@joshillian](https://github.com/joshillian)]
 ### Changed
 
 - `Faker.Avatar` switch to `https` to prevent redirect [[igas](https://github.com/igas)]
