@@ -4,4 +4,5 @@ defmodule Faker.PhoneTest do
   doctest Faker.Phone.EnGb
   doctest Faker.Phone.EnUs
   doctest Faker.Phone.Hy
+  doctest Faker.Phone.PtBr
 end

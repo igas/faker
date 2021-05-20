@@ -92,6 +92,7 @@
 - [Faker.Phone.EnUs](lib/faker/phone/en_us.ex)
 - [Faker.Phone.EnGb](lib/faker/phone/en_gb.ex)
 - [Faker.Phone.Hy](lib/faker/phone/hy.ex)
+- [Faker.Phone.PtBr](lib/faker/phone/pt_br.ex)
 - [Faker.Pizza](lib/faker/pizza.ex)
 - [Faker.Pokemon](lib/faker/pokemon.ex)
 - [Faker.Pokemon.En](lib/faker/pokemon/en.ex)
