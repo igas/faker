@@ -25,6 +25,7 @@
 - [Faker.Cat](lib/faker/cat.ex)
 - [Faker.Cat.En](lib/faker/cat/en.ex)
 - [Faker.Code](lib/faker/code.ex)
+- [Faker.Code.GitRef](lib/faker/code/git_ref.ex)
 - [Faker.Color](lib/faker/color.ex)
 - [Faker.Color.De](lib/faker/color/de.ex)
 - [Faker.Color.En](lib/faker/color/en.ex)

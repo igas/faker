@@ -45,6 +45,8 @@ Change log itself follows [Keep a CHANGELOG](http://keepachangelog.com) format.
 - `Faker.Airports.iata/0` [[@brunohkbx](https://github.com/brunohkbx)]
 - `Faker.Airports.En.name/0` [[@brunohkbx](https://github.com/brunohkbx)]
 
+- Add `Faker.Code.GitRef` module with git commit sha and branch names generators
+
 ### Changed
 
 ### Deprecated
