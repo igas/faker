@@ -71,6 +71,7 @@
   <!-- J -->
   <!-- K -->
   <!-- L -->
+- [Faker Location](lib/fake/location.ex)
 - [Faker.Lorem](lib/faker/lorem.ex)
 - [Faker.Lorem.Shakespeare](lib/faker/lorem/shakespeare.ex)
 - [Faker.Lorem.Shakespeare.En](lib/faker/lorem/shakespeare/en.ex)
