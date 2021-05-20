@@ -146,29 +146,21 @@ defmodule Faker do
   end
 
   defmacro sampler(name, data) do
-    count = Enum.count(data)
-
-    mapped_data =
-      data |> Enum.with_index() |> Enum.into(%{}, fn {k, v} -> {v, k} end) |> Macro.escape()
-
     quote do
+      @count Enum.count(unquote(data))
+      @mapped_data unquote(data) |> Enum.with_index() |> Enum.into(%{}, fn {k, v} -> {v, k} end)
       def unquote(name)() do
-        unquote(mapped_data)
-        |> Map.get(Faker.random_between(0, unquote(count - 1)))
+        Map.get(@mapped_data, Faker.random_between(0, @count - 1))
       end
     end
   end
 
   defmacro samplerp(name, data) do
-    count = Enum.count(data)
-
-    mapped_data =
-      data |> Enum.with_index() |> Enum.into(%{}, fn {k, v} -> {v, k} end) |> Macro.escape()
-
     quote do
+      @count Enum.count(unquote(data))
+      @mapped_data unquote(data) |> Enum.with_index() |> Enum.into(%{}, fn {k, v} -> {v, k} end)
       defp unquote(name)() do
-        unquote(mapped_data)
-        |> Map.get(Faker.random_between(0, unquote(count - 1)))
+        Map.get(@mapped_data, Faker.random_between(0, @count - 1))
       end
     end
   end

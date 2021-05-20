@@ -7,5 +7,6 @@ defmodule Faker.PersonTest do
   doctest Faker.Person.Fr
   doctest Faker.Person.Hy
   doctest Faker.Person.It
+  doctest Faker.Person.Ja
   doctest Faker.Person.PtBr
 end

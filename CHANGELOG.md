@@ -11,6 +11,8 @@ Change log itself follows [Keep a CHANGELOG](http://keepachangelog.com) format.
 ### Added
 - `Faker.Internet.StatusCode` [[@emmetreza](https://github.com/emmetreza)]
 
+- `Faker.Person.Ja` [[@ymtszw](https://github.com/ymtszw)]
+
 ### Changed
 - `Faker.Vehicles` add makes and models that are multi-word, refactor existing fns [[jersearls](https://github.com/jersearls)]
 
@@ -40,7 +42,7 @@ Change log itself follows [Keep a CHANGELOG](http://keepachangelog.com) format.
 - `Faker.Phone.PtPt.landline_number/0` [[@rubenandre](https://github.com/rubenandre)]
 - `Faker.Phone.PtPt.cell_number/0` [[@rubenandre](https://github.com/rubenandre)]
 - `Faker.Aws.Fr.region_name/0` [[@vboivin](https://github.com/vboivin)]
-- `Faker.String.naughty/0` [[@Cantido][https://github.com/Cantido]]
+- `Faker.String.naughty/0` [[@Cantido](https://github.com/Cantido)]
 - `Faker.Airports.icao/0` [[@brunohkbx](https://github.com/brunohkbx)]
 - `Faker.Airports.iata/0` [[@brunohkbx](https://github.com/brunohkbx)]
 - `Faker.Airports.En.name/0` [[@brunohkbx](https://github.com/brunohkbx)]
